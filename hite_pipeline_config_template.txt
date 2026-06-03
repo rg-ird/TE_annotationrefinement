@@ -1,0 +1,36 @@
+# HiTE TE annotation refinement pipeline parameters
+# Lines starting with # are ignored.
+# Format: key = value
+
+# Required inputs
+rmout = canephora.fna.out
+hite_lib = confident_TE.cons.fa
+inpactor_lib = inpactor2_library.fa
+
+# Optional, but recommended for step 6
+tesorter_tsv = confident_TE.cons.fa.rexdb-plant.cls.tsv
+
+# Output directory
+outdir = HITE_PIPELINE_RESULTS
+
+# Directory containing helper scripts
+scripts_dir = scripts
+
+# Filtering parameters
+min_length = 100
+min_overlap_fraction = 0.8
+sort = true
+
+# Reannotation parameters
+threads = 8
+min_identity = 50
+min_qcov = 40
+blast_tsv =
+reuse_blast = false
+
+# Final GFF option
+no_normalize_gff = false
+
+# Optional switches
+skip_tesorter = false
+dry_run = false
