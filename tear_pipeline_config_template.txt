@@ -1,0 +1,54 @@
+# HiTE TE annotation refinement pipeline parameters
+# Lines starting with # are ignored.
+# Format: key = value
+
+# Required inputs
+rmout = canephora.fna.out
+hite_lib = confident_TE.cons.fa
+inpactor_lib = inpactor2_library.fa
+
+# Optional, but recommended for step 6
+tesorter_tsv = confident_TE.cons.fa.rexdb-plant.cls.tsv
+
+# Output directory
+outdir = HITE_PIPELINE_RESULTS
+
+# Directory containing helper scripts
+scripts_dir = scripts
+
+# Filtering parameters
+min_length = 100
+min_overlap_fraction = 0.8
+sort = true
+
+# Reannotation parameters
+threads = 8
+min_identity = 50
+min_qcov = 40
+blast_tsv =
+reuse_blast = false
+
+# Final GFF option
+no_normalize_gff = false
+
+# Optional graphical outputs using plot_te_gene_density_from_out.py
+# plot = false disables all graphical outputs
+plot = false
+# Comma-separated list among: level1,ltr_superfamily,gypsy_family,copia_family,all
+plot_modes = all
+# Prefix for graphical files. If relative, it is written inside outdir.
+plot_prefix = te_density
+# Required if plot = true, unless plot script can infer sizes. Recommended: genome.fasta.fai
+plot_sizes = genome.fna.fai
+# Optional gene GFF3. Leave empty to plot only TE densities.
+plot_gff = genes.gff3
+plot_gene_feature = gene
+plot_window = 200000
+plot_step = 200000
+plot_min_size = 1000000
+plot_dpi = 300
+plot_chrom_match = auto
+
+# Optional switches
+skip_tesorter = false
+dry_run = false
