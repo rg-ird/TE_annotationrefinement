@@ -1,0 +1,104 @@
+###############################################################################
+# TEAR pipeline configuration file
+###############################################################################
+
+# ---------------------------------------------------------------------------
+# Required input files
+# ---------------------------------------------------------------------------
+
+rmout = canephora.fna.out
+hite_lib = confident_TE.cons.fa
+inpactor_lib = inpactor2_library.fa
+
+# Optional, but recommended for step 6B
+tesorter_tsv = confident_TE.cons.fa.rexdb-plant.cls.tsv
+
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+
+outdir = TEAR_RESULTS
+final_prefix = canephora
+
+# ---------------------------------------------------------------------------
+# Scripts directory and helper script names
+# ---------------------------------------------------------------------------
+
+scripts_dir = scripts
+
+script_min_length = filter_repeatmasker_min_length.py
+script_simple_repeat = filter_repeatmasker_simple_repeat.py
+script_count_overlaps = count_TE_overlaps_out.py
+script_score_filter = filter_annotation_score_out.py
+script_reannot = reannotate_ltr_inpactor2_then_tesorter_harmonized.py
+script_tbl = rebuild_tbl_harmonized.py
+script_gff = repeatmasker_out_to_gff3.py
+script_plot = plot_te_gene_density_from_out.py
+
+# count_TE_overlaps_out.py outputs are generated automatically:
+# Step 3 before score filtering:
+#   -s <outdir>/03.overlaps_before_filter.summary.tsv
+#   -d <outdir>/03.overlaps_before_filter.details.tsv
+# Step 5 after score filtering:
+#   -s <outdir>/05.overlaps_after_filter.summary.tsv
+#   -d <outdir>/05.overlaps_after_filter.details.tsv
+
+# ---------------------------------------------------------------------------
+# Step 1: minimum length filtering
+# ---------------------------------------------------------------------------
+
+min_length = 100
+
+# ---------------------------------------------------------------------------
+# Step 4: overlap filtering by annotation score
+# ---------------------------------------------------------------------------
+
+min_overlap_fraction = 0.8
+sort = true
+
+# ---------------------------------------------------------------------------
+# Step 6A: optional cleaning of Inpactor2 library
+# ---------------------------------------------------------------------------
+
+clean_inpactor_lib = false
+clean_inpactor_script = count_ltr_classif_valeurextreme_cleaning.py
+clean_inpactor_output = inpactor2_library.cleaned.fa
+
+# ---------------------------------------------------------------------------
+# Step 6B: Inpactor2 + optional TEsorter reannotation
+# ---------------------------------------------------------------------------
+
+threads = 16
+min_identity = 50
+min_qcov = 40
+blast_tsv =
+reuse_blast = false
+skip_tesorter = false
+
+# ---------------------------------------------------------------------------
+# Step 8: final GFF option
+# ---------------------------------------------------------------------------
+
+no_normalize_gff = false
+
+# ---------------------------------------------------------------------------
+# Step 9: optional graphical outputs
+# ---------------------------------------------------------------------------
+
+plot = false
+plot_modes = all
+plot_prefix = te_density
+plot_sizes = genome.fna.fai
+plot_gff = genes.gff3
+plot_gene_feature = gene
+plot_window = 200000
+plot_step = 200000
+plot_min_size = 1000000
+plot_dpi = 300
+plot_chrom_match = auto
+
+# ---------------------------------------------------------------------------
+# Miscellaneous
+# ---------------------------------------------------------------------------
+
+dry_run = false
