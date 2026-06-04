@@ -29,7 +29,7 @@ LTR Class harmonization
         +--> GFF3
 
 # Installation 
-git clone https://github.com/xxxxx/HiTE_pipeline.git
+git clone https://github.com/rg-ird/TE_annotationrefinement.git
 cd HiTE_pipeline
 
 # Usage
