@@ -16,13 +16,12 @@ It processes the HiTE results repeatmasker .out file to remove overlapping annot
 git clone https://github.com/rg-ird/TE_annotationrefinement.git  
 cd TE_annotationrefinement  
 You need to install/load NCBI blast before to run the pipeline.  
-The V2 include a graphical output (genes/TEs density along chromosomes).  
-For V2 you need to sort the chromosome lenth: samtools faidx genome.fa   
+You also need to sort the chromosome lenth into a file for graphical outputs:  
+samtools faidx genome.fa   
 
 # Usage
 python tear_pipeline.py --param tear_pipeline_config_template.txt  
-or  
-python tear_pipeline_v2.py --param tear_pipeline_config_template_v2.txt  
+
 
 
   
