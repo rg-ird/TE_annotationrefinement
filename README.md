@@ -14,11 +14,15 @@ It processes the HiTE results repeatmasker .out file to remove overlapping annot
 
 # Installation 
 git clone https://github.com/rg-ird/TE_annotationrefinement.git  
-cd TE_annotationrefinement
-You need to install/load NCBI blast before to run the pipeline
+cd TE_annotationrefinement  
+You need to install/load NCBI blast before to run the pipeline.  
+The V2 include a graphical output (gene/YE density along chromosomes).  
 
 # Usage
-python tear_pipeline.py --param tear_pipeline_config_template.txt
+python tear_pipeline.py --param tear_pipeline_config_template.txt  
+or  
+python tear_pipeline_v2.py --param tear_pipeline_config_template_v2.txt  
+
 
   
 
