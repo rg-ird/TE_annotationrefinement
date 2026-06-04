@@ -12,7 +12,7 @@ Prerequisite:
 ![Workflow](docs/workflow.png)
 
 # Installation 
-git clone https://github.com/rg-ird/TE_annotationrefinement.git
+git clone https://github.com/rg-ird/TE_annotationrefinement.git  
 cd HiTE_pipeline
 
 # Usage
