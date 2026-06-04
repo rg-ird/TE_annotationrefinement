@@ -17,6 +17,7 @@ git clone https://github.com/rg-ird/TE_annotationrefinement.git
 cd TE_annotationrefinement  
 You need to install/load NCBI blast before to run the pipeline.  
 The V2 include a graphical output (genes/TEs density along chromosomes).  
+For V2 you need to sort the chromosome lenth: samtools faidx genome.fa   
 
 # Usage
 python tear_pipeline.py --param tear_pipeline_config_template.txt  
