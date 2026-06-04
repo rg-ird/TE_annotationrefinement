@@ -1,4 +1,4 @@
-# TE_annotationrefinement
+# TE_annotation_refinement (TEAR)  
 Pipeline for plant transposable element annotation refinement.  
 This Pipeline use HiTE results (repeatmasker .out and library files), Tesorter results (with the HiTE library files) and the Inpactor 2 results.
 It processes the HiTE results repeatmasker .out file to remove overlapping annotation based on repeatmasker score and annotate the LTR retrotranspososn at the family level.  
@@ -13,10 +13,10 @@ Prerequisite:
 
 # Installation 
 git clone https://github.com/rg-ird/TE_annotationrefinement.git  
-cd HiTE_pipeline
+cd TEAR_pipeline
 
 # Usage
-python hite_pipeline.py --param hite_pipeline_config_template.txt
+python tear_pipeline.py --param tear_pipeline_config_template.txt
 
   
 
