@@ -1,0 +1,25 @@
+Total RepeatMasker annotation lines	17221
+Candidate LTR/Gypsy, LTR/Copia or Unknown LTR lines	7175
+Lines rewritten in output	7175
+Lines reannotated by Inpactor2	3434
+Lines reannotated by TEsorter after no Inpactor2 hit	1970
+Candidate lines kept/set to Unknown	1771
+Lines with TEsorter classification but not used because Inpactor2 had priority	1773
+
+Status	Count
+Inpactor2_hit	3434
+No_valid_Inpactor2_or_TEsorter_hit	1771
+TEsorter_hit_after_no_Inpactor2	1970
+
+New_family	Count
+LTR/Copia/ALE-RETROFIT	466
+LTR/Copia/BIANCA	177
+LTR/Copia/IVANA-ORYCO	198
+LTR/Copia/SIRE	142
+LTR/Copia/TAR-TORK	251
+LTR/Copia/Unknown	481
+LTR/Gypsy/ATHILA	2463
+LTR/Gypsy/REINA	163
+LTR/Gypsy/TAT	1056
+LTR/Gypsy/TEKAY-DEL	488
+LTR/Gypsy/Unknown	1290

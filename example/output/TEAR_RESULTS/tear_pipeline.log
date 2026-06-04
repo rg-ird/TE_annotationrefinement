@@ -1,0 +1,198 @@
+[2026-06-04 18:56:39] Starting TEAR annotation refinement pipeline
+[2026-06-04 18:56:39] Output directory: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS
+[2026-06-04 18:56:39] STEP 1/8 - Filtering annotations by minimum length
+[2026-06-04 18:56:39] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/filter_repeatmasker_min_length.py -i /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/HiTE.out -o /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/01.min_length_filtered.out --min-length 100
+===== Résumé du filtrage =====
+Fichier entrée          : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/HiTE.out
+Fichier sortie          : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/01.min_length_filtered.out
+Longueur minimale       : 100 bp
+
+Annotations totales     : 67384
+Annotations conservées  : 18973
+Annotations retirées    : 48411
+% annotations retirées  : 71.8435%
+
+Bases annotées totales  : 14909394
+Bases conservées        : 12902971
+Bases retirées          : 2006423
+% bases retirées        : 13.4574%
+
+Annotations retirées par classe
+class	removed_count	removed_bp
+DNA/CMC-EnSpm	83	5594
+DNA/Crypton	34	2006
+DNA/MULE	228	16194
+DNA/PIF-Harbinger	315	21147
+DNA/TcMar	271	17655
+DNA/hAT	199	13315
+LINE/L1	338	22355
+LTR/Copia	523	34207
+LTR/Gypsy	823	50387
+Low_complexity	9040	419944
+RC/Helitron	458	29578
+SINE/tRNA	68	4639
+Simple_repeat	35505	1336644
+Unknown	526	32758
+[2026-06-04 18:56:39] STEP 1 done: annotations < 100 bp removed.
+[2026-06-04 18:56:39] STEP 2/8 - Removing Simple_repeat / Low_complexity
+[2026-06-04 18:56:39] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/filter_repeatmasker_simple_repeat.py -i /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/01.min_length_filtered.out -o /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/02.no_simple_repeat.out
+Résumé du filtrage
+Fichier d'entrée : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/01.min_length_filtered.out
+Fichier de sortie : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/02.no_simple_repeat.out
+Annotations conservées : 17756
+Annotations retirées : 1217
+Classes retirées : Low_complexity, Simple_repeat
+[2026-06-04 18:56:40] STEP 2 done: Simple_repeat / Low_complexity removed.
+[2026-06-04 18:56:40] STEP 3/8 - Evaluating overlaps before score filtering
+[2026-06-04 18:56:40] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/count_TE_overlaps_out.py -i /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/02.no_simple_repeat.out -s /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/03.overlaps_before_filter.summary.tsv -d /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/03.overlaps_before_filter.details.tsv
+===== Résumé global =====
+Annotations totales        : 17756
+Bases annotées totales     : 12704127
+Événements de chevauchement: 2323
+Bases chevauchantes        : 406790
+Pourcentage chevauchement  : 3.2020%
+Résumé par séquence        : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/03.overlaps_before_filter.summary.tsv
+Détails des chevauchements : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/03.overlaps_before_filter.details.tsv
+[2026-06-04 18:56:40] Pourcentage chevauchement avant filtrage score : 3.2020 %
+[2026-06-04 18:56:40] STEP 4/8 - Filtering overlapping annotations by score
+[2026-06-04 18:56:40] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/filter_annotation_score_out.py -i /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/02.no_simple_repeat.out -o /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/04.score_overlap_filtered.out --min-overlap-fraction 0.8 --sort
+Sorting input hits...
+
+Filtering summary
+-----------------
+Input annotations:  17756
+Output annotations: 17221
+Removed:            535
+Removed by score:   535
+[2026-06-04 18:56:40] STEP 4 done: score filtering applied with min-overlap-fraction=0.8; sort=True.
+[2026-06-04 18:56:40] STEP 5/8 - Evaluating overlaps after score filtering
+[2026-06-04 18:56:40] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/count_TE_overlaps_out.py -i /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/04.score_overlap_filtered.out -s /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/05.overlaps_after_filter.summary.tsv -d /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/05.overlaps_after_filter.details.tsv
+===== Résumé global =====
+Annotations totales        : 17221
+Bases annotées totales     : 12432763
+Événements de chevauchement: 1655
+Bases chevauchantes        : 166796
+Pourcentage chevauchement  : 1.3416%
+Résumé par séquence        : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/05.overlaps_after_filter.summary.tsv
+Détails des chevauchements : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/05.overlaps_after_filter.details.tsv
+[2026-06-04 18:56:40] Pourcentage chevauchement après filtrage score : 1.3416 %
+[2026-06-04 18:56:40] STEP 6A - Cleaning Inpactor2 library before reannotation
+[2026-06-04 18:56:40] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/count_ltr_classif_valeurextreme_cleaning.py -i /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/Inpactor2_library.fasta -o /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/inpactor2_library.cleaned.fa
+/shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/count_ltr_classif_valeurextreme_cleaning.py:59: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(
+/shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/count_ltr_classif_valeurextreme_cleaning.py:73: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(
+===== Résumé nettoyage librairie Inpactor2 =====
+Fichier entrée     : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/Inpactor2_library.fasta
+Fichier sortie     : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/inpactor2_library.cleaned.fa
+IQR factor         : 1.5
+Séquences totales  : 112
+Séquences gardées  : 100
+Séquences retirées : 12
+PDF avant          : LTR_Sequence_Sizes_Before_Filtering.pdf
+PDF après          : LTR_Sequence_Sizes_After_Filtering.pdf
+[2026-06-04 18:56:41] STEP 6A done: cleaned Inpactor2 library written to /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/inpactor2_library.cleaned.fa
+[2026-06-04 18:56:41] STEP 6B/8 - Reannotating LTR with Inpactor2 first, then optional TEsorter
+[2026-06-04 18:56:41] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/reannotate_ltr_inpactor2_then_tesorter_harmonized.py --rmout /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/04.score_overlap_filtered.out --hite-lib /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/confident_TE.cons.fa --inpactor-lib /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/inpactor2_library.cleaned.fa --out /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/06.reannotated_inpactor2_tesorter_harmonized.out --threads 16 --min-identity 70.0 --min-qcov 50.0 --tesorter-tsv /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/confident_TE.cons.fa.rexdb-plant.cls.tsv
+
+
+Building a new DB, current time: 06/04/2026 18:56:41
+New DB name:   /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/inpactor2_library.cleaned_blastdb
+New DB title:  /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/inpactor2_library.cleaned.fa
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 100 sequences in 0.0131009 seconds.
+
+
+TEsorter classifications chargées : 124
+TEsorter lignes ignorées car famille inconnue/non classée : 3
+Réannotation terminée
+Fichier .out réannoté : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/06.reannotated_inpactor2_tesorter_harmonized.out
+Table de correspondance : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/06.reannotated_inpactor2_tesorter_harmonized.out.mapping.tsv
+Résumé : /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/06.reannotated_inpactor2_tesorter_harmonized.out.summary.txt
+Hits Inpactor2 retenus : 115
+Classifications TEsorter chargées : 124
+[2026-06-04 18:56:42] STEP 6B done: reannotation completed with min_identity=70.0, min_qcov=50.0.
+[2026-06-04 18:56:42] Final .out written: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out
+[2026-06-04 18:56:42] STEP 7/8 - Building RepeatMasker-like .tbl summary
+[2026-06-04 18:56:42] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/rebuild_tbl_harmonized.py -i /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out -o /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.repeatmasker_like.tbl
+Input file: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out
+Output tbl: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.repeatmasker_like.tbl
+Genome size estimated: 119514156 bp
+Total annotated bp: 12432763
+Total elements: 17221
+[2026-06-04 18:56:42] STEP 7 done: .tbl produced: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.repeatmasker_like.tbl
+[2026-06-04 18:56:42] STEP 8/8 - Converting final .out to GFF3
+[2026-06-04 18:56:42] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/repeatmasker_out_to_gff3.py -i /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out -o /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.repeatmasker.gff3
+Input: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out
+Output: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.repeatmasker.gff3
+Annotations written: 17221
+Lines skipped: 2
+[2026-06-04 18:56:43] STEP 8 done: GFF3 produced: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.repeatmasker.gff3
+[2026-06-04 18:56:43] STEP 9 - Producing optional graphical outputs
+[2026-06-04 18:56:43] STEP 9 - Plot mode: level1
+[2026-06-04 18:56:43] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/plot_te_gene_density_from_out.py --out-file /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out --mode level1 --window 1000000 --step 100000 --min-size 1000000 --prefix /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_level1 --dpi 300 --chrom-match auto --sizes /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/ARABIDOPSIS.fna.fai --gff /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/genomic.gff --gene-feature gene
+RepeatMasker lines skipped/header: 2
+TE categories retained:
+  LTR: 7175
+  DNA: 5064
+  Unknown: 1774
+  Helitron: 1705
+  LINE: 1354
+  SINE: 149
+TE chromosomes: 6 original names; 1 matching keys
+Gene feature requested: gene
+Gene annotations retained: 33268
+Gene chromosomes: 7 original names; 1 matching keys
+Total gene bp counted across windows: 2903167140
+Output table: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_level1_table.tsv
+PDF files written with prefix: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_level1_<chromosome>.pdf
+[2026-06-04 18:56:55] STEP 9 - Plot mode: ltr_superfamily
+[2026-06-04 18:56:55] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/plot_te_gene_density_from_out.py --out-file /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out --mode ltr_superfamily --window 1000000 --step 100000 --min-size 1000000 --prefix /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_ltr_superfamily --dpi 300 --chrom-match auto --sizes /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/ARABIDOPSIS.fna.fai --gff /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/genomic.gff --gene-feature gene
+RepeatMasker lines skipped/header: 2
+TE categories retained:
+  Gypsy: 5460
+  Copia: 1715
+TE chromosomes: 6 original names; 1 matching keys
+Gene feature requested: gene
+Gene annotations retained: 33268
+Gene chromosomes: 7 original names; 1 matching keys
+Total gene bp counted across windows: 2903167140
+Output table: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_ltr_superfamily_table.tsv
+PDF files written with prefix: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_ltr_superfamily_<chromosome>.pdf
+[2026-06-04 18:56:59] STEP 9 - Plot mode: gypsy_family
+[2026-06-04 18:56:59] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/plot_te_gene_density_from_out.py --out-file /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out --mode gypsy_family --window 1000000 --step 100000 --min-size 1000000 --prefix /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_gypsy_family --dpi 300 --chrom-match auto --sizes /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/ARABIDOPSIS.fna.fai --gff /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/genomic.gff --gene-feature gene
+RepeatMasker lines skipped/header: 2
+TE categories retained:
+  ATHILA: 2463
+  Unknown: 1290
+  TAT: 1056
+  TEKAY-DEL: 488
+  REINA: 163
+TE chromosomes: 6 original names; 1 matching keys
+Gene feature requested: gene
+Gene annotations retained: 33268
+Gene chromosomes: 7 original names; 1 matching keys
+Total gene bp counted across windows: 2903167140
+Output table: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_gypsy_family_table.tsv
+PDF files written with prefix: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_gypsy_family_<chromosome>.pdf
+[2026-06-04 18:57:04] STEP 9 - Plot mode: copia_family
+[2026-06-04 18:57:04] RUN: /shared/software/miniconda_deployment/bin/python /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/scripts/plot_te_gene_density_from_out.py --out-file /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/out.final.filtered.reannotated.out --mode copia_family --window 1000000 --step 100000 --min-size 1000000 --prefix /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_copia_family --dpi 300 --chrom-match auto --sizes /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/ARABIDOPSIS.fna.fai --gff /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/genomic.gff --gene-feature gene
+RepeatMasker lines skipped/header: 2
+TE categories retained:
+  Unknown: 481
+  ALE-RETROFIT: 466
+  TAR-TORK: 251
+  IVANA-ORYCO: 198
+  BIANCA: 177
+  SIRE: 142
+TE chromosomes: 6 original names; 1 matching keys
+Gene feature requested: gene
+Gene annotations retained: 33268
+Gene chromosomes: 7 original names; 1 matching keys
+Total gene bp counted across windows: 2903167140
+Output table: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_copia_family_table.tsv
+PDF files written with prefix: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_copia_family_<chromosome>.pdf
+[2026-06-04 18:57:09] STEP 9 done: graphical outputs produced with prefix: /shared/projects/pangenome_coffea/COFFEA_GENOMES/C_canephora/Hite/example/TEAR_RESULTS/te_density_<mode>
+[2026-06-04 18:57:09] Pipeline finished successfully.

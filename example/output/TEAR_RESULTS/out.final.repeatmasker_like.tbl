@@ -1,0 +1,62 @@
+==================================================
+RepeatMasker-like summary rebuilt from .out file
+Classification harmonized: Inpactor2 + TEsorter
+==================================================
+
+Genome size estimated:       119514156 bp
+Total interspersed repeats:  12432763 bp
+Number of elements:          17221
+
+Detailed classification
+--------------------------------------------------------------------------------
+Class                                   Count          bp masked   % genome
+--------------------------------------------------------------------------------
+DNA/CMC-EnSpm                             720             643834      0.539
+DNA/hAT                                   500             164225      0.137
+DNA/Merlin                                  0                  0      0.000
+DNA/MULE                                  992             336534      0.282
+DNA/PIF-Harbinger                        1733             537591      0.450
+DNA/TcMar                                1078             471102      0.394
+Helitron                                 1705             781173      0.654
+LINE/L1                                  1354            1112757      0.931
+SINE/tRNA                                 149              22789      0.019
+LTR/ERV                                     0                  0      0.000
+LTR/Gypsy/ATHILA                         2463            3256109      2.724
+LTR/Gypsy/CRM                               0                  0      0.000
+LTR/Gypsy/GALADRIEL                         0                  0      0.000
+LTR/Gypsy/REINA                           163             159174      0.133
+LTR/Gypsy/TAT                            1056            1291184      1.080
+LTR/Gypsy/TEKAY-DEL                       488             571010      0.478
+LTR/Gypsy/mixture                           0                  0      0.000
+LTR/Gypsy/Unknown                        1290             769511      0.644
+LTR/Copia/ALE-RETROFIT                    466             596915      0.499
+LTR/Copia/ANGELA                            0                  0      0.000
+LTR/Copia/BIANCA                          177             233170      0.195
+LTR/Copia/IVANA-ORYCO                     198             200946      0.168
+LTR/Copia/SIRE                            142             153577      0.129
+LTR/Copia/TAR-TORK                        251             243921      0.204
+LTR/Copia/mixture                           0                  0      0.000
+LTR/Copia/Unknown                         481             124271      0.104
+Unknown                                  1774             748283      0.626
+Other                                      41              14687      0.012
+
+Other classes detected:
+  DNA/Crypton	41	14687
+--------------------------------------------------------------------------------
+
+Summary groups
+--------------------------------------------------------------------------------
+Group                                   Count          bp masked   % genome
+--------------------------------------------------------------------------------
+All SINE                                  149              22789      0.019
+All LINE                                 1354            1112757      0.931
+All LTR/Gypsy                            5460            6046988      5.060
+All LTR/Copia                            1715            1552800      1.299
+All LTR/ERV                                 0                  0      0.000
+All LTR                                  7175            7599788      6.359
+All DNA                                  5064            2167973      1.814
+All Helitron                             1705             781173      0.654
+All mixture                                 0                  0      0.000
+All Unknown                              3545            1642065      1.374
+--------------------------------------------------------------------------------
+Total                                   17221           12432763     10.403
