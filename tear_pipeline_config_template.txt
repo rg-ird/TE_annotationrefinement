@@ -1,0 +1,89 @@
+###############################################################################
+# TEAR pipeline configuration file
+###############################################################################
+
+# ---------------------------------------------------------------------------
+# Required input files
+# ---------------------------------------------------------------------------
+
+rmout = HiTE.out
+hite_lib = confident_TE.cons.fa
+inpactor_lib = Inpactor2_library.fasta
+tesorter_tsv = confident_TE.cons.fa.rexdb-plant.cls.tsv
+
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+
+outdir = TEAR_RESULTS
+final_prefix = out
+
+# ---------------------------------------------------------------------------
+# Scripts directory
+# ---------------------------------------------------------------------------
+
+scripts_dir = scripts
+
+script_min_length = filter_repeatmasker_min_length.py
+script_simple_repeat = filter_repeatmasker_simple_repeat.py
+script_count_overlaps = count_TE_overlaps_out.py
+script_score_filter = filter_annotation_score_out.py
+script_reannot = reannotate_ltr_inpactor2_then_tesorter_harmonized.py
+script_tbl = rebuild_tbl_harmonized.py
+script_gff = repeatmasker_out_to_gff3.py
+script_plot = plot_te_gene_density_from_out.py
+
+# ---------------------------------------------------------------------------
+# Step 1: minimum length filtering
+# ---------------------------------------------------------------------------
+min_len = 100
+# ---------------------------------------------------------------------------
+# Step 4: overlap filtering by annotation score
+# ---------------------------------------------------------------------------
+min_overlap_fraction = 0.8
+# ---------------------------------------------------------------------------
+# Step 6A: optional cleaning of Inpactor2 library
+# ---------------------------------------------------------------------------
+# If true, the pipeline cleans the Inpactor2 FASTA library before reannotation.
+# The cleaned library is then used by reannotate_ltr_inpactor2_then_tesorter_harmonized.py.
+
+clean_inpactor_lib = true
+clean_inpactor_script = count_ltr_classif_valeurextreme_cleaning.py
+clean_inpactor_output = Inpactor2_library.cleaned.fa
+
+# ---------------------------------------------------------------------------
+# Step 6B: Inpactor2 + TEsorter reannotation
+# ---------------------------------------------------------------------------
+# Sensitive defaults:
+# min_identity = 50 # or 70
+# min_qcov = 40 # or 50
+# Normal:
+# min_identity =  70
+# min_qcov =  50
+threads = 16
+min_identity = 50
+min_qcov = 40
+
+# ---------------------------------------------------------------------------
+# Step 9: optional graphical outputs
+# ---------------------------------------------------------------------------
+# plot = true or false
+# plot_modes can be:
+#   all
+#   level1
+#   ltr_superfamily
+#   gypsy_family
+#   copia_family
+# or several comma-separated values:
+#   level1,gypsy_family,copia_family
+
+plot = true
+plot_modes = all
+plot_prefix = te_density
+
+plot_sizes = genome.fna.fai
+plot_gff = genome.gff
+plot_gene_feature = gene
+
+plot_window = 1000000
+plot_step = 100000
