@@ -8,25 +8,26 @@ Prerequisite:
 -[Inpactor2] (https://github.com/simonorozcoarias/Inpactor2) Inpactor 2 library results: Inpactor2_library.fasta  
 
 # Workflow
-HiTE RepeatMasker .out
-        |
-        v
-Length/Simple repeat filtering
-        |
-        v
-Overlap estimation and filtering
-        |
-        v
-Inpactor2 reannotation
-        |
-        v
-TEsorter refinement
-        |
-        v
-LTR Class harmonization
-        |
-        +--> RepeatMasker-like .tbl
-        +--> GFF3
+HiTE RepeatMasker .out  
+        |  
+        v  
+Length/Simple repeat filtering  
+        |  
+        v  
+Overlap estimation and filtering  
+        |  
+        v  
+Inpactor2 reannotation  
+        |  
+        v  
+TEsorter refinement  
+        |  
+        v  
+LTR Class harmonization  
+        |  
+        +--> RepeatMasker-like .tbl  
+        +--> GFF3  
+![Workflow](docs/workflow.png)
 
 # Installation 
 git clone https://github.com/rg-ird/TE_annotationrefinement.git
