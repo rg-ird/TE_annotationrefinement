@@ -1,4 +1,4 @@
-# TE_annotation_refinement (TEAR)  
+# TE Annotation Refinement (TEAR)  
 Pipeline for plant transposable element annotation refinement.  
 This Pipeline use HiTE results (repeatmasker .out and library files), Tesorter results (with the HiTE library files) and the Inpactor 2 results.  
 It processes the HiTE results repeatmasker .out file to remove overlapping annotation based on repeatmasker score and annotate the LTR retrotransposons at the family level.  
