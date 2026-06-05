@@ -22,6 +22,16 @@ samtools faidx genome.fa
 # Usage
 python tear_pipeline.py --param tear_pipeline_config_template.txt  
 
+# Results  
+
+In TEAR_RESULTS atre the results of each step.  
+-the final filtered .out  
+-the .tbl file  
+-All graphics in PDF format, including the csv table of density.
+
+
+
+
 
 
   
