@@ -10,7 +10,7 @@ It processes the HiTE results repeatmasker .out file to remove overlapping annot
 
 # Workflow
  
-![Workflow](docs/workflow.pdf)
+![Workflow](docs/workflow.png
 
 # Installation 
 git clone https://github.com/rg-ird/TE_annotationrefinement.git  
