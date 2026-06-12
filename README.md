@@ -20,7 +20,9 @@ You also need to sort the chromosome lenth into a file for graphical outputs:
 samtools faidx genome.fa   
 
 # Usage
-python tear_pipeline.py --param tear_pipeline_config_template.txt  
+```python
+print("python tear_pipeline.py --param tear_pipeline_config_template.txt")  
+```
 
 # Results  
 
