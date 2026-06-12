@@ -26,9 +26,12 @@ python tear_pipeline.py --param tear_pipeline_config_template.txt
 
 # Results  
 
-In TEAR_RESULTS atre the results of each step.  
--the final filtered .out  
+In TEAR_RESULTS directory are the results of each step.  
+The main results are:  
+
+-the final filtered .out file  
 -the .tbl file  
+-the .gff file  
 -All graphics in PDF format, including the csv table of density.
 
 
